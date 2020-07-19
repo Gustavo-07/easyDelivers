@@ -1,0 +1,21 @@
+.margin {
+    padding: 3%;
+}
+
+#contenido {
+    text-align: center;
+}
+
+#img {
+    border: 2px double rgb(175, 170, 174);
+    margin-bottom: 10px;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px
+}
+
+.custon-file {
+    padding: 4px;
+    background-color: #1A83FF;
+    border-radius: 7%;
+}

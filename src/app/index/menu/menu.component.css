@@ -1,0 +1,16 @@
+.name-uno {
+    font-size: 15px;
+}
+
+.name-dos {
+    font-size: 25px;
+}
+
+.navbar-nav {
+    margin-right: auto;
+}
+
+nav {
+    position: relative;
+    width: 100%;
+}
