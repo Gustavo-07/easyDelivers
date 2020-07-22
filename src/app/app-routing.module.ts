@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
-  { path: 'index', loadChildren: () => import('./index/index.module').then(m => m.indexModule) },
+  { path: 'index', loadChildren: () => import('./index/index.module').then(m => m.IndexModule) },
 ];
 
 @NgModule({

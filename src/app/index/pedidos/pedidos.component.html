@@ -1,0 +1,70 @@
+<div class="margin">
+    <button mat-raised-button (click)="onVerTodosLosPedidos()" class="mb-3">
+    Todos los pedidos
+  </button>
+    <button mat-raised-button (click)="onVerTodosLosPedidos()" class="mb-3">
+    Agregar pedido
+  </button>
+    <div class="row">
+        <div class="col-md-8">
+            <p class="font-weight-light text-wrap">Pedidos ingresados </p>
+            <div class="mat-elevation-z2">
+                <table mat-table [dataSource]="dataSource" class="w-100" MatSort>
+
+                    <!-- número en el array -->
+                    <ng-container matColumnDef="No">
+                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                        <td mat-cell *matCellDef="let element; let i = index;"> {{(i+1)}} </td>
+                    </ng-container>
+
+                    <!-- Nombre producto -->
+                    <ng-container matColumnDef="Nombre">
+                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                        <td mat-cell *matCellDef="let producto"> {{producto.titulo}} </td>
+                    </ng-container>
+
+                    <!-- Codigo del producto  -->
+                    <ng-container matColumnDef="Codigo">
+                        <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                        <td mat-cell *matCellDef="let producto"> {{producto.codigo}} </td>
+                    </ng-container>
+
+                    <!-- precio  -->
+                    <ng-container matColumnDef="Precio">
+                        <th mat-header-cell *matHeaderCellDef> Precio </th>
+                        <td mat-cell *matCellDef="let producto" class="mat-column-creado"> {{producto.precio | currency: 'COP' | lowercase}} </td>
+                    </ng-container>
+
+                    <!-- visualizador -->
+                    <ng-container matColumnDef="Ver">
+                        <th mat-header-cell *matHeaderCellDef class=""> Ver</th>
+                        <td mat-cell *matCellDef="let producto" class="mat-column-ver">
+                            <button mat-icon-button (click)="onVerPedido()">
+                            <mat-icon class="fa fa-tag"></mat-icon>
+                          </button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <p class="font-weight-light text-wrap">Detalle de pedido</p>
+            <div class="card" style="width: 20rem;">
+                <div class="contenedor">
+
+                </div>
+                <div class="card-body">
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

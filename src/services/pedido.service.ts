@@ -9,7 +9,7 @@ import { Solicitante } from 'src/models/pedidos/solicitante';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { analytics } from 'firebase';
+import { analytics, firestore } from 'firebase';
 
 const direccion = '/valledupar - CO/pedidos/lista';
 @Injectable({
@@ -27,7 +27,7 @@ export class PedidoService {
     this.pedidoCollection.add(postObj);
   }
 
-  public ObtenerPedidos(): Observable<Pedido[]> {
+  public obtenerPedidos(): Observable<Pedido[]> {
     return this.pedidoCollection
     .snapshotChanges()
     .pipe(
@@ -43,41 +43,24 @@ export class PedidoService {
 
   private mapPosObj(pedido: Pedido, solicitante: Solicitante, recepcion: Recepcion, entrega: Entrega) {
     const postObj = {
-      encargado: pedido.encargado,
+      encargado: '',
+      publicado: new Date(),
       entrega: {
         barrio: entrega.barrio,
         direccion: entrega.direccion,
         nombre: entrega.nombre,
         telefono: entrega.telefono
       },
-      entregado: {
-        hora: '',
-        ubicacion: {
-          latitud: 0,
-          longitud: 0
-        }
-      },
-      escogido: {
-        hora: '',
-        ubicacion: {
-          latitud: 0,
-          longitud: 0
-        }
-      },
-      estado: '',
+      entregado: null,
+      escogido: null,
+      estado: 'new',
       recepcion: {
         barrio: recepcion.barrio,
         direccion: recepcion.direccion,
         nombre: recepcion.nombre,
         telefono: recepcion.telefono
       },
-      recibido: {
-        hora: '',
-        ubicacion: {
-          latitud: 0,
-          longitud: 0
-        }
-      },
+      recibido: null,
       solicitante: {
         cedula: solicitante.cedula,
         nombre: solicitante.nombre,

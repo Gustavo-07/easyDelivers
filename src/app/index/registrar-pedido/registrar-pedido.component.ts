@@ -20,7 +20,7 @@ export class RegistrarPedidoComponent implements OnInit {
   public recepcion = new Recepcion();
   public solicitante = new Solicitante();
 
-  public mensajeros$: Observable<Mensajero[]>;
+  // public mensajeros$: Observable<Mensajero[]>;
   public mensajero = new Mensajero();
 
   constructor(
@@ -29,7 +29,7 @@ export class RegistrarPedidoComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.mensajeros$ = this.mensajeroService.ObtenerMensajeros();
+    // this.mensajeros$ = this.mensajeroService.ObtenerMensajeros();
   }
 
   async onSubmit() {
