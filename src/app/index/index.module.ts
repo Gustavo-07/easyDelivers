@@ -27,7 +27,9 @@ import { PedidosComponent } from './pedidos/pedidos.component';
       AngularMaterialModule
   ],
   exports: [],
-  entryComponents: [],
+  entryComponents: [
+    RegistrarPedidoComponent
+  ],
   bootstrap: [IndexComponent]
 })
 

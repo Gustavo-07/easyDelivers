@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
-import { Entrega } from 'src/models/pedidos/entrega';
-import { Pedido } from 'src/models/pedidos/pedido';
-import { Recepcion } from 'src/models/pedidos/recepcion';
-import { Solicitante } from 'src/models/pedidos/solicitante';
+import { Pedidos } from 'src/models/pedidos/pedidos';
 import { PedidoService } from 'src/services/pedido.service';
 import { RegistrarPedidoComponent } from 'src/app/index/registrar-pedido/registrar-pedido.component';
+import { stateOrders } from 'src/types/types';
 
 @Component({
   selector: 'app-pedidos',
@@ -14,14 +12,13 @@ import { RegistrarPedidoComponent } from 'src/app/index/registrar-pedido/registr
 })
 export class PedidosComponent implements OnInit {
 
-  displayedColumns: string[] = ['No', 'Nombre', 'Codigo', 'Precio', 'Ver'];
+  displayedColumns: string[] = ['No', 'Estado', 'Solicitante', 'Mensajero', 'Origen', 'Destino', 'Ver'];
   dataSource = new MatTableDataSource();
-  public entrega = new Entrega();
-  public pedido = new Pedido();
-  public recepcion = new Recepcion();
-  public solicitante = new Solicitante();
-  listaDePedidos: Pedido[] = [];
+  pedido: Pedidos = new Pedidos();
+  pedidoVer: Pedidos = new Pedidos();
+  listaDePedidos: Pedidos[] = [];
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+
 
   constructor(
     private pedidoService: PedidoService,
@@ -35,7 +32,7 @@ export class PedidosComponent implements OnInit {
           this.listaDePedidos = Response;
           this.dataSource = new MatTableDataSource(Response);
           this.dataSource.paginator = this.paginator;
-          this.onVerPedido();
+          this.onVerPedido(Response[0].id);
         }
       )
     ]);
@@ -45,14 +42,25 @@ export class PedidosComponent implements OnInit {
     this.onCambiarDataSource(this.listaDePedidos);
   }
 
-  onVerPedido() {
+  onVerPedido(id: string) {
+    this.pedidoVer = this.listaDePedidos.find(item => item.id === id);
   }
 
-  onCambiarDataSource(pedidos: Pedido[]) {
+  onCambiarDataSource(pedidos: Pedidos[]) {
     this.dataSource.disconnect();
     this.dataSource = new MatTableDataSource(pedidos);
     this.dataSource.paginator = this.paginator;
     this.dataSource._updatePaginator(this.dataSource.data.length);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open( RegistrarPedidoComponent, {
+      width: '500px'
+    });
+  }
+
+  onEstadoSeleccionado() {
+
   }
 
 }

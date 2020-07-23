@@ -1,71 +1,65 @@
 <form (ngSubmit)="form.form.valid && onSubmit()" #form="ngForm">
     <div class="margin">
-        <h1>Registrar pedido</h1>
+        <h1 mat-dialog-title>Registrar Pedido</h1>
+        <div mat-dialog-content>
 
-        <h2>Datos del solicitante</h2>
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" placeholder="Digitar Nombre" [(ngModel)]="solicitante.nombre" id="nombre" name="nombre" required />
-        </div>
-        <div class="form-group">
-            <label for="cedula"> Numero de documento</label>
-            <input type="number" class="form-control" placeholder="Digitar documento" [(ngModel)]="solicitante.cedula" id="cedula" name="cedula" />
-        </div>
-        <div class="form-group">
-            <label for="telefono">Telefono</label>
-            <input type="number" class="form-control" placeholder="Digitar telefono" [(ngModel)]="solicitante.telefono" id="telefono" name="telefono" required />
+            <h5>Datos del solicitante</h5>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput placeholder="Digitar Nombre" [(ngModel)]="pedido.solicitante.nombre" name="nombre" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Nomero de documento</mat-label>
+                <input type="number" matInput placeholder="Digitar documento" [(ngModel)]="pedido.solicitante.cedula" name="cedula">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Telefono</mat-label>
+                <input type="number" matInput placeholder="Digitar Telefono" [(ngModel)]="pedido.solicitante.telefono" name="telefono" required>
+            </mat-form-field>
+
+            <h5>Datos del lugar donde se buscara el pedido</h5>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Barrio</mat-label>
+                <input type="text" matInput placeholder="Digitar barrio" [(ngModel)]="pedido.recepcion.barrio" name="barrioRecepcion">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Dirección</mat-label>
+                <input type="text" matInput placeholder="Digitar dirección" [(ngModel)]="pedido.recepcion.direccion" name="direccionRecepcion" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Nomobre del remitente</mat-label>
+                <input type="text" matInput placeholder="Digitar Nombre" [(ngModel)]="pedido.recepcion.nombre" name="nombreRemitente" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Telefono del remitente</mat-label>
+                <input type="number" matInput placeholder="Digitar telefono" [(ngModel)]="pedido.recepcion.telefono" name="telefonoRemitente">
+            </mat-form-field>
+
+
+            <h5>Datos del lugar donde se entregara el pedido</h5>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Barrio</mat-label>
+                <input type="text" matInput placeholder="Digitar barrio" [(ngModel)]="pedido.entrega.barrio" name="barrioEntrega">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Dirección</mat-label>
+                <input type="text" matInput placeholder="Digitar dirección" [(ngModel)]="pedido.entrega.direccion" name="direccionEntrega" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Nombre del destinatario</mat-label>
+                <input type="text" matInput placeholder="Digitar nombre" [(ngModel)]="pedido.entrega.nombre" name="nombreDestinatario">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="mat-form-field w-100">
+                <mat-label>Telefono del destinatario</mat-label>
+                <input type="number" matInput placeholder="Digitar telefono" [(ngModel)]="pedido.entrega.telefono" name="telefonoDestinatario">
+            </mat-form-field>
         </div>
 
-        <h2>Datos del lugar donde se buscara el pedido</h2>
-        <div class="form-group">
-            <label for="barrioRecepcion">Barrio</label>
-            <input type="text" class="form-control" placeholder="Digitar barrio" [(ngModel)]="recepcion.barrio" id="barrioRecepcion" name="barrioRecepcion">
-        </div>
-        <div class="form-group">
-            <label for="direccionRecepcion">Dirección</label>
-            <input type="text" class="form-control" placeholder="Digitar direccion" [(ngModel)]="recepcion.direccion" id="direccionRecepcion" name="direccionRecepcion" required>
-        </div>
-        <div class="form-group">
-            <label for="nombreRemitente">Nombre del remitente</label>
-            <input type="text" class="form-control" placeholder="Digitar nombre" [(ngModel)]="recepcion.nombre" id="nombreRemitente" name="nombreRemitente" required>
-        </div>
-        <div class="form-group">
-            <label for="telefonoRemitente">Telefono del remitente</label>
-            <input type="number" class="form-control" placeholder="Digitar telefono" [(ngModel)]="recepcion.telefono" id="telefonoRemitente" name="telefonoRemitente">
-        </div>
-
-        <h2>Datos del lugar donde se entregara el pedido</h2>
-        <div class="form-group">
-            <label for="barrioEntrega">Barrio</label>
-            <input type="text" class="form-control" placeholder="Digitar barrio" [(ngModel)]="entrega.barrio" id="barrioEntrega" name="barrioEntrega">
-        </div>
-        <div class="form-group">
-            <label for="direccionEntrega">Dirección</label>
-            <input type="text" class="form-control" placeholder="Digitar direccion" [(ngModel)]="entrega.direccion" id="direccionEntrega" name="direccionEntrega" required>
-        </div>
-        <div class="form-group">
-            <label for="nombreDestinatario">Nombre del destinatario</label>
-            <input type="text" class="form-control" placeholder="Digitar nombre" [(ngModel)]="entrega.nombre" id="nombreDestinatario" name="nombreDestinatario">
-        </div>
-        <div class="form-group">
-            <label for="telefonoDestinatario">Telefono del destinatario</label>
-            <input type="number" class="form-control" placeholder="Digitar telefono" [(ngModel)]="entrega.telefono" id="telefonoDestinatario" name="telefonoDestinatario">
-        </div>
-
-        <!-- <h2>Datos del mensajero</h2>
-        <div class="form-group row mt-3">
-            <label for="nombreMensajero">Mensajero</label>
-            <select class="form-control" [(ngModel)]="pedido.encargado" id="nombreMensajero" name="nombreMensajero" required>
-                <option *ngFor="let mensajero of mensajeros$ | async" [value]="mensajero.correo">
-                  {{mensajero.nombre}}
-                </option>
-            </select>
-        </div>-->
-
-        <div>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">
-              Guardar pedido
-            </button>
+        <div mat-dialog-actions>
+            <div class="w-100 clearfix">
+                <button class="float-left" mat-button (click)="onNoClick()">Cerrar</button>
+                <button class="float-right" cdkFocusInitial mat-raised-button color="primary" type="submit">Registrar</button>
+            </div>
         </div>
     </div>
 </form>
