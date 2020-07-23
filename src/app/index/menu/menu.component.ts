@@ -9,7 +9,7 @@ import { menuOptions } from 'src/types/types';
 export class MenuComponent implements OnInit {
 
   @Output() opcion = new EventEmitter<menuOptions>();
-  seleccionado: menuOptions = 'inicio';
+  seleccionado: menuOptions = 'pedidos';
   constructor() { }
 
   ngOnInit() {

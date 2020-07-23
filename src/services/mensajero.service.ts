@@ -8,11 +8,9 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 const direccion = '/valledupar - CO/mensajeros/lista';
-
 @Injectable({
   providedIn: 'root'
 })
-
 export class MensajeroService {
   private mensajeroCollection: AngularFirestoreCollection<Mensajero>;
   private filepath: any;
@@ -38,7 +36,7 @@ export class MensajeroService {
     .pipe(
       map(actions =>
         actions.map(a => {
-          const data = <Mensajero>a.payload.doc.data();
+          const data = a.payload.doc.data() as Mensajero;
           const id = a.payload.doc.id;
           return { id, ...data };
         })
@@ -90,6 +88,4 @@ export class MensajeroService {
     .then((result) => callBack(result))
     .catch((error) => callBack(error));
   }
-
-
 }

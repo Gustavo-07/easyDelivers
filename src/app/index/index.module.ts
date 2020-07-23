@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from './index.component';
 import { AngularMaterialModule } from '../angularMaterial.module';
 import { MenuComponent } from './menu/menu.component';
-import { InicioComponent } from './inicio/inicio.component';
 import { RegistrarMensajeroComponent } from './registrar-mensajero/registrar-mensajero.component';
 import { RegistrarPedidoComponent } from './registrar-pedido/registrar-pedido.component';
 import { indexRoutesModule } from './index.routes';
@@ -15,7 +14,6 @@ import { MapComponent } from './map/map.component';
   declarations: [
     IndexComponent,
       MenuComponent,
-      InicioComponent,
       RegistrarMensajeroComponent,
       RegistrarPedidoComponent,
       PedidosComponent,
@@ -29,7 +27,9 @@ import { MapComponent } from './map/map.component';
       AngularMaterialModule
   ],
   exports: [],
-  entryComponents: [],
+  entryComponents: [
+    MapComponent
+  ],
   bootstrap: [IndexComponent]
 })
 

@@ -7,7 +7,7 @@ import { menuOptions } from 'src/types/types';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-  opcionMenu: menuOptions = 'inicio';
+  opcionMenu: menuOptions = 'pedidos';
 
   constructor() { }
 
