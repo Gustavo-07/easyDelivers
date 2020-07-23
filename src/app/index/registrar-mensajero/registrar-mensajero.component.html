@@ -1,72 +1,105 @@
-<form (ngSubmit)="form.form.valid && onSubmit()" #form="ngForm">
-    <div class="margin">
-        <h2>Datos del Mensajero</h2>
-        <div class="w-100" id="contenedor">
-            <div class="mx-auto" id="contenido">
-                <img [src]="imagenUrl" id="img" />
-                <br/>
-                <div class="container-input-file">
-                    <label class="custon-file">
-                       <input type="file" #Image accept="image/jpg" (change)="entradaDeArchivo($event.target.files)"
-                       (change)="handleImage($event)" name="imagen" required hidden /> subir imagen
-                    </label>
+<h2 mat-dialog-title>Datos del Mensajero</h2>
+<mat-dialog-content class="mat-typography">
+    <form (ngSubmit)="form.form.valid && onSubmit()" #form="ngForm">
+        <div class="margin">
+            <div class="w-100" id="contenedor">
+                <div class="mx-auto" id="contenido">
+                    <img [src]="imagenUrl" id="img" />
+                    <br />
+                    <div class="container-input-file">
+                        <div class="custom-file">
+                            <input (change)="entradaDeArchivo($event.target.files)" (change)="handleImage($event)"
+                                type="file" class="custom-file-input custom-file mt-4" id="inputFile">
+                            <label class="custom-file-label" for="inputFile">Buscar Imagen</label>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="mat-form-field w-100">
+                    <mat-label>Nombre del remitente</mat-label>
+                    <input type="text" matInput placeholder="Digitar Nombre" [(ngModel)]="mensajero.nombre"
+                        name="nombreRemitente" required>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="mat-form-field w-100">
+                    <mat-label>Numero de documento</mat-label>
+                    <input type="text" matInput placeholder="Digitar Cedula" [(ngModel)]="mensajero.cedula"
+                        name="cedula" required>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="mat-form-field w-100">
+                    <mat-label>Telefono</mat-label>
+                    <input type="text" matInput placeholder="Digitar Telefono" [(ngModel)]="mensajero.telefono"
+                        name="telefono" required>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="mat-form-field w-100">
+                    <mat-label>Correo Electronico</mat-label>
+                    <input type="text" matInput placeholder="Digitar Correo Electronico" [(ngModel)]="mensajero.correo"
+                        name="correo" required>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="mat-form-field w-100">
+                    <mat-label>Direccion</mat-label>
+                    <input type="text" matInput placeholder="Digitar Direccion" [(ngModel)]="mensajero.direccion"
+                        name="direccion" required>
+                </mat-form-field>
+            </div>
+            <div class="form-group row mt-3">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="mat-form-field w-100">
+                        <mat-label>Fecha de nacimiento</mat-label>
+                        <input type="date" matInput placeholder="Digitar Fecha Nacimiento"
+                            [(ngModel)]="mensajero.fechaNcimiento" name="nacimiento" required>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" class="mat-form-field w-100">
+                        <mat-label>Genero</mat-label>
+                        <mat-select [(ngModel)]="mensajero.genero" name="genero">
+                            <mat-option *ngFor="let item of TipoGenero " [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <h2>Datos del Vehiculo</h2>
+
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="mat-form-field w-100">
+                    <mat-label>Marca</mat-label>
+                    <input type="text" matInput placeholder="Digitar Marca" [(ngModel)]="vehiculo.marca" name="marca"
+                        id="marca" required>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="mat-form-field w-100">
+                    <mat-label>Matricula</mat-label>
+                    <input type="text" matInput placeholder="Digitar Matricula" [(ngModel)]="vehiculo.matricula"
+                        name="matricula" id="matricula" required>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="mat-form-field w-100">
+                    <mat-label>Tipo vehiculo</mat-label>
+                    <mat-select [(ngModel)]="vehiculo.tipoVehuiculo" name="tipoVehiculo" required>
+                        <mat-option *ngFor="let item of TipoVehiculo " [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
-
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" placeholder="Digitar Nombre" [(ngModel)]="mensajero.nombre" id="nombre" name="nombre" required />
+        <div mat-dialog-actions align="end">
+            <button mat-raised-button [mat-dialog-close]="true" color="warn">Cancelar</button>
+            <button mat-raised-button color="primary" class="btn " type="submit">Guardar</button>
         </div>
-        <div class="form-group">
-            <label for="cedula"> Numero de documento</label>
-            <input type="number" class="form-control" placeholder="Digitar documento" [(ngModel)]="mensajero.cedula" id="cedula" name="cedula" required />
-        </div>
-        <div class="form-group">
-            <label for="telefono">Telefono</label>
-            <input type="number" class="form-control" placeholder="Digitar telefono" [(ngModel)]="mensajero.telefono" id="telefono" name="telefono" required />
-        </div>
-        <div class="form-group">
-            <label for="correo">Correo Electronico</label>
-            <input type="text" class="form-control" placeholder="Digitar correo electronico" [(ngModel)]="mensajero.correo" id="correo" name="correo" required />
-        </div>
-        <div>
-            <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" placeholder="Digitar dirección" [(ngModel)]="mensajero.direccion" id="direccion" name="direccion" required />
-        </div>
-        <div class="form-group row mt-3">
-            <div class="col">
-                <label for="nacimiento">Fecha de nacimiento</label>
-                <input type="date" class="form-control" placeholder="Digitar fecha de nacimiento" [(ngModel)]="mensajero.fechaNcimiento" id="nacimiento" name="nacimiento" required />
-            </div>
-            <div class="col">
-                <label for="genero">Genero</label>
-                <select class="form-control" [(ngModel)]="mensajero.genero" id="genero" name="genero" required>
-          <option value="masculino">Masculino</option>
-          <option value="femenino">Femenino</option>
-        </select>
-            </div>
-        </div>
-        <h2>Datos del Vehiculo</h2>
-
-        <div class="form-group">
-            <label for="marca">Marca</label>
-            <input type="text" class="form-control" placeholder="Digitar marca" [(ngModel)]="vehiculo.marca" id="marca" name="marca" required />
-        </div>
-        <div class="form-group">
-            <label for="matricula">Matricula</label>
-            <input type="text" class="form-control" placeholder="Digitar matricula" [(ngModel)]="vehiculo.matricula" id="matricula" name="matricula" required />
-        </div>
-        <div class="form-group">
-            <label for="tipoVehiculo">Tipo de vehiculo</label>
-            <input type="text" class="form-control" placeholder="Digitar tipo de vehiculo" [(ngModel)]="vehiculo.tipoVehuiculo" id="tipoVehiculo" name="tipoVehiculo" required />
-        </div>
-
-        <div>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">
-        Guardar
-      </button>
-        </div>
-    </div>
-</form>
+    </form>
+</mat-dialog-content>

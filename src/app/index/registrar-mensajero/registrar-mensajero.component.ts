@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MensajeroService} from 'src/services/mensajero.service';
+import { MensajeroService } from 'src/services/mensajero.service';
 import { Mensajero } from 'src/models/mensajeros/mensajero';
 import { Vehiculo } from 'src/models/mensajeros/vehiculo';
 
@@ -17,6 +17,8 @@ export class RegistrarMensajeroComponent implements OnInit {
   imagenUrl = '/assets/add2.png';
   imagenSubida: File;
 
+  TipoVehiculo = ['Motorizado', 'Automovil', 'Bicicleta']
+  TipoGenero = ['Masculino', 'Femenino', 'Otro']
   constructor(private mensajeroService: MensajeroService) { }
 
   ngOnInit() {
