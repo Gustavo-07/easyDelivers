@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { Pedidos } from 'src/models/pedidos/pedidos';
 import { PedidoService } from 'src/services/pedido.service';
@@ -14,7 +14,6 @@ export class PedidosComponent implements OnInit {
 
   displayedColumns: string[] = ['No', 'Estado', 'Solicitante', 'Mensajero', 'Origen', 'Destino', 'Ver'];
   dataSource = new MatTableDataSource();
-  pedido: Pedidos = new Pedidos();
   pedidoVer: Pedidos = new Pedidos();
   listaDePedidos: Pedidos[] = [];
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -22,7 +21,8 @@ export class PedidosComponent implements OnInit {
 
   constructor(
     private pedidoService: PedidoService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private ngZone: NgZone
   ) { }
 
   async ngOnInit() {
@@ -43,7 +43,9 @@ export class PedidosComponent implements OnInit {
   }
 
   onVerPedido(id: string) {
-    this.pedidoVer = this.listaDePedidos.find(item => item.id === id);
+    this.ngZone.run(() => {
+      this.pedidoVer = this.listaDePedidos.find(item => item.id.localeCompare(id) === 0);
+    });
   }
 
   onCambiarDataSource(pedidos: Pedidos[]) {
@@ -59,8 +61,9 @@ export class PedidosComponent implements OnInit {
     });
   }
 
-  onEstadoSeleccionado() {
-
+  onEstadoSeleccionado(event: stateOrders) {
+    event === 'all' ? this.onCambiarDataSource(this.listaDePedidos) :
+    this.onCambiarDataSource(this.listaDePedidos.filter(item => item.estado === event));
   }
 
 }

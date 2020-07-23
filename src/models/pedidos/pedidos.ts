@@ -1,5 +1,6 @@
 import * as firebase from 'firebase/app';
 import { Mensajero } from '../mensajeros/mensajero';
+import { stateOrders } from 'src/types/types';
 
 export class Pedidos {
 
@@ -10,7 +11,7 @@ export class Pedidos {
   entrega: Direccion;
   entregado?: Ubicacion;
   escogido?: Ubicacion;
-  estado: string;
+  estado: stateOrders;
   recepcion: Direccion;
   recibido?: Ubicacion;
   solicitante: Solicitante;
