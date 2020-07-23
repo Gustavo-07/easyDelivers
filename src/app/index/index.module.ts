@@ -9,6 +9,7 @@ import { RegistrarMensajeroComponent } from './registrar-mensajero/registrar-men
 import { RegistrarPedidoComponent } from './registrar-pedido/registrar-pedido.component';
 import { indexRoutesModule } from './index.routes';
 import { PedidosComponent } from './pedidos/pedidos.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PedidosComponent } from './pedidos/pedidos.component';
       InicioComponent,
       RegistrarMensajeroComponent,
       RegistrarPedidoComponent,
-      PedidosComponent
+      PedidosComponent,
+      MapComponent
   ],
   imports: [
       indexRoutesModule,

@@ -8,8 +8,7 @@ import { Recepcion } from 'src/models/pedidos/recepcion';
 import { Solicitante } from 'src/models/pedidos/solicitante';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { analytics, firestore } from 'firebase';
+
 
 const direccion = '/valledupar - CO/pedidos/lista';
 @Injectable({
