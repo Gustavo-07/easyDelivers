@@ -57,7 +57,7 @@ export class PedidosComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open( RegistrarPedidoComponent, {
-      width: '500px'
+      width: '700px'
     });
   }
 
