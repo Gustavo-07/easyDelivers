@@ -1,4 +1,4 @@
-import { async } from '@angular/core/testing';
+import { generoOptions } from 'src/types/types'
 
 export class Mensajero {
   banned: boolean;
@@ -9,7 +9,7 @@ export class Mensajero {
   direccion: string;
   disponible: boolean;
   fechaNcimiento?: string;
-  genero: string;
+  genero: generoOptions;
   realizados: string[];
   realizando: string;
   image?: any;

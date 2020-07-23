@@ -1,9 +1,20 @@
 .margin {
     padding: 3%;
+    width: 1000px;
 }
 
 #contenido {
     text-align: center;
+
+}
+
+.custom-file-input, .custom-file{
+    position: relative;
+    z-index: 2;
+    width: 60%;
+    height: calc(1.5em + .75rem + 2px);
+    margin: 0;
+    margin-bottom: 15;
 }
 
 #img {

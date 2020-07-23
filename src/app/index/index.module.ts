@@ -9,26 +9,28 @@ import { RegistrarMensajeroComponent } from './registrar-mensajero/registrar-men
 import { RegistrarPedidoComponent } from './registrar-pedido/registrar-pedido.component';
 import { indexRoutesModule } from './index.routes';
 import { PedidosComponent } from './pedidos/pedidos.component';
+import { MensajeroComponent } from './mensajero/mensajero.component'
 
 @NgModule({
   declarations: [
     IndexComponent,
-      MenuComponent,
-      InicioComponent,
-      RegistrarMensajeroComponent,
-      RegistrarPedidoComponent,
-      PedidosComponent
+    MenuComponent,
+    InicioComponent,
+    RegistrarMensajeroComponent,
+    RegistrarPedidoComponent,
+    PedidosComponent,
+    MensajeroComponent
   ],
   imports: [
-      indexRoutesModule,
-      FormsModule,
-      ReactiveFormsModule,
-      CommonModule,
-      AngularMaterialModule
+    indexRoutesModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    AngularMaterialModule
   ],
   exports: [],
-  entryComponents: [],
+  entryComponents: [RegistrarMensajeroComponent],
   bootstrap: [IndexComponent]
 })
 
-export class IndexModule {}
+export class IndexModule { }
