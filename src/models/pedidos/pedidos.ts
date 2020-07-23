@@ -1,4 +1,3 @@
-import * as firebase from 'firebase/app';
 import { Mensajero } from '../mensajeros/mensajero';
 import { stateOrders } from 'src/types/types';
 
@@ -54,7 +53,7 @@ export interface Direccion {
 
 export interface Ubicacion {
   hora: Date;
-  ubicacion: string;
+  ubicacion: firebase.firestore.GeoPoint;
 }
 
 export interface Solicitante {
@@ -62,5 +61,3 @@ export interface Solicitante {
   nombre: string;
   telefono: number;
 }
-
-

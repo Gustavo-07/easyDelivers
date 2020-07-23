@@ -6,7 +6,7 @@
                 <div class="col-md">
                     <p class="font-weight-light text-wrap">Pedidos ingresados </p>
                 </div>
-                <div class="col-md contenido">
+                <div class="col-md-4">
                     <mat-form-field class="contenido">
                         <mat-select placeholder="Estados" value="all" (selectionChange)="onEstadoSeleccionado($event.value)">
                             <mat-option [value]="'all'">Todos</mat-option>
@@ -90,6 +90,7 @@
                         <mat-list-item role="listitem" class="list"><strong>Nombre: </strong>&nbsp; {{pedidoVer.solicitante.nombre}}</mat-list-item>
                         <mat-list-item role="listitem" class="list"><strong>CC: </strong>&nbsp; {{pedidoVer.solicitante.cedula}}</mat-list-item>
                         <mat-list-item role="listitem" class="list"><strong>Telefono: </strong>&nbsp; {{pedidoVer.solicitante.telefono}}</mat-list-item>
+                        <a class="w-100" mat-button href="{{'https://web.whatsapp.com/send?phone=57' + pedidoVer.solicitante.telefono}}" target="_blank" color="primary"><span class="fa fa-whatsapp"></span> Ir a Whatsapp</a>
                     </mat-list-item> <br>
 
                     <mat-divider></mat-divider>
@@ -99,6 +100,7 @@
                         <mat-list-item role="listitem" class="list"><strong>Dirección: </strong>&nbsp; {{pedidoVer.recepcion.direccion}}</mat-list-item>
                         <mat-list-item role="listitem" class="list"><strong>Nombre: </strong>&nbsp; {{pedidoVer.recepcion.nombre}}</mat-list-item>
                         <mat-list-item role="listitem" class="list"><strong>Telefono: </strong>&nbsp; {{pedidoVer.recepcion.telefono}}</mat-list-item>
+                        <a class="w-100" mat-button href="{{'https://web.whatsapp.com/send?phone=57' + pedidoVer.recepcion.telefono}}" target="_blank" color="primary"><span class="fa fa-whatsapp"></span> Ir a Whatsapp</a>
                     </mat-list-item> <br>
 
                     <mat-divider></mat-divider>
@@ -108,8 +110,13 @@
                         <mat-list-item role="listitem" class="list"><strong>Dirección: </strong>&nbsp; {{pedidoVer.entrega.direccion}}</mat-list-item>
                         <mat-list-item role="listitem" class="list"><strong>Nombre: </strong>&nbsp; {{pedidoVer.entrega.nombre}}</mat-list-item>
                         <mat-list-item role="listitem" class="list"><strong>Telefono: </strong>&nbsp; {{pedidoVer.entrega.telefono}}</mat-list-item>
+                        <a class="w-100" mat-button href="{{'https://web.whatsapp.com/send?phone=57' + pedidoVer.entrega.telefono}}" target="_blank" color="primary"><span class="fa fa-whatsapp"></span> Ir a Whatsapp</a>
                     </mat-list-item>
                 </mat-card-content>
+                <mat-card-actions>
+                    <!-- 'mat-button','mat-raised-button', 'mat-flat-button','mat-stroked-button','mat-icon-button','mat-fab','mat-mini-fab' -->
+                    <button class="w-100 mb-3" mat-raised-button color="primary" (click)="verMapa()">Monitorer Pedido&nbsp;<span class="fa fa-map-marker"></span></button>
+                </mat-card-actions>
             </mat-card>
         </div>
 

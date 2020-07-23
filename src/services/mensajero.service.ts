@@ -88,6 +88,4 @@ export class MensajeroService {
     .then((result) => callBack(result))
     .catch((error) => callBack(error));
   }
-
-
 }

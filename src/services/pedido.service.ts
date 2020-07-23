@@ -5,9 +5,6 @@ import { Mensajero } from 'src/models/mensajeros/mensajero';
 import { Pedidos } from 'src/models/pedidos/pedidos';
 
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase/app';
-import 'firebase/firestore';
 
 const direccion = '/valledupar - CO/pedidos/lista';
 @Injectable({

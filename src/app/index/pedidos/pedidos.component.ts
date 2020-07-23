@@ -4,6 +4,7 @@ import { Pedidos } from 'src/models/pedidos/pedidos';
 import { PedidoService } from 'src/services/pedido.service';
 import { RegistrarPedidoComponent } from 'src/app/index/registrar-pedido/registrar-pedido.component';
 import { stateOrders } from 'src/types/types';
+import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-pedidos',
@@ -41,7 +42,7 @@ export class PedidosComponent implements OnInit {
   onVerTodosLosPedidos() {
     this.onCambiarDataSource(this.listaDePedidos);
   }
-
+ 
   onVerPedido(id: string) {
     this.ngZone.run(() => {
       this.pedidoVer = this.listaDePedidos.find(item => item.id.localeCompare(id) === 0);
@@ -66,4 +67,10 @@ export class PedidosComponent implements OnInit {
     this.onCambiarDataSource(this.listaDePedidos.filter(item => item.estado === event));
   }
 
+  verMapa() {
+    const dialogRef = this.dialog.open( MapComponent, {
+      width: '800px',
+      data: this.pedidoVer
+    });
+  }
 }
