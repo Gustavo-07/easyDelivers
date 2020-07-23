@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Entrega } from 'src/models/pedidos/entrega';
-import { Pedido } from 'src/models/pedidos/pedido';
-import { Recepcion } from 'src/models/pedidos/recepcion';
-import { Solicitante } from 'src/models/pedidos/solicitante';
+import { Pedidos } from 'src/models/pedidos/pedidos';
 import { MensajeroService } from 'src/services/mensajero.service';
 import { PedidoService } from 'src/services/pedido.service';
 import { Observable } from 'rxjs';
 import { Mensajero } from 'src/models/mensajeros/mensajero';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { PushNotification } from 'src/app/index/funcionesGenerales.board';
 
 @Component({
   selector: 'app-registrar-pedido',
@@ -15,17 +14,16 @@ import { Mensajero } from 'src/models/mensajeros/mensajero';
 })
 export class RegistrarPedidoComponent implements OnInit {
 
-  public entrega = new Entrega();
-  public pedido = new Pedido();
-  public recepcion = new Recepcion();
-  public solicitante = new Solicitante();
+  public pedido = new Pedidos();
 
   // public mensajeros$: Observable<Mensajero[]>;
   public mensajero = new Mensajero();
 
   constructor(
     private mensajeroService: MensajeroService,
-    private pedidoService: PedidoService
+    private pedidoService: PedidoService,
+    public dialogRef: MatDialogRef<RegistrarPedidoComponent>,
+    public snakBar: MatSnackBar
     ) { }
 
   ngOnInit() {
@@ -33,7 +31,17 @@ export class RegistrarPedidoComponent implements OnInit {
   }
 
   async onSubmit() {
-    this.pedidoService.guardarPedido(this.pedido, this.solicitante, this.recepcion, this.entrega);
+    try {
+      await this.pedidoService.guardarPedido(this.pedido);
+      PushNotification('Se guardo el pedido', this.snakBar);
+    } catch (e) {
+      PushNotification('Error al guardar el pedido', this.snakBar);
+      console.log('esto', e);
+    }
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

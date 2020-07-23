@@ -29,7 +29,10 @@ import { MensajeroComponent } from './mensajero/mensajero.component'
     AngularMaterialModule
   ],
   exports: [],
-  entryComponents: [RegistrarMensajeroComponent],
+  entryComponents: [
+    RegistrarMensajeroComponent,
+    RegistrarPedidoComponent
+],
   bootstrap: [IndexComponent]
 })
 
