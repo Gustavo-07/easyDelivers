@@ -29,9 +29,9 @@ import { MapComponent } from './map/map.component';
     AngularMaterialModule
   ],
   exports: [],
-    MapComponent
+    entryComponents:[MapComponent,
     RegistrarMensajeroComponent,
-    RegistrarPedidoComponent
+    RegistrarPedidoComponent],
   bootstrap: [IndexComponent]
 })
 
