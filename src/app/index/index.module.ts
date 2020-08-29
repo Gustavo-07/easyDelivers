@@ -6,6 +6,7 @@ import { AngularMaterialModule } from '../angularMaterial.module';
 import { MenuComponent } from './menu/menu.component';
 import { RegistrarMensajeroComponent } from './registrar-mensajero/registrar-mensajero.component';
 import { RegistrarPedidoComponent } from './registrar-pedido/registrar-pedido.component';
+import { ReportesComponent } from './reportes/reportes.component'
 import { indexRoutesModule } from './index.routes';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { MensajeroComponent } from './mensajero/mensajero.component'
@@ -14,12 +15,13 @@ import { MapComponent } from './map/map.component';
 @NgModule({
   declarations: [
     IndexComponent,
-      MenuComponent,
-      RegistrarMensajeroComponent,
-      RegistrarPedidoComponent,
-      PedidosComponent,
-      MapComponent,
-      MensajeroComponent
+    MenuComponent,
+    RegistrarMensajeroComponent,
+    RegistrarPedidoComponent,
+    ReportesComponent,
+    PedidosComponent,
+    MapComponent,
+    MensajeroComponent
   ],
   imports: [
     indexRoutesModule,
@@ -29,9 +31,10 @@ import { MapComponent } from './map/map.component';
     AngularMaterialModule
   ],
   exports: [],
-    entryComponents:[MapComponent,
+  entryComponents: [MapComponent,
     RegistrarMensajeroComponent,
-    RegistrarPedidoComponent],
+    RegistrarPedidoComponent,
+    ReportesComponent],
   bootstrap: [IndexComponent]
 })
 
